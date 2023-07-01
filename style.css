@@ -42,6 +42,7 @@ h1{
 main{
     width: 100vw;
     background-color: var(--secondary-color);
+    min-height: 80vh;
     border-radius: 2rem 2rem 0 0;
     display: flex;
     flex-direction: column;

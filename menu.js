@@ -66,9 +66,9 @@ export function showDishes(menu) {
     
                 $productsDivOptions.appendChild($product)
             });
+            $productsDiv.classList.remove("none")
             setTimeout(() => {
                 $productsDiv.classList.remove("hidden")
-                $productsDiv.classList.remove("none")
             }, 400);
         })
     });
@@ -87,6 +87,6 @@ export function returnMenu(btn) {
             }, 400);
             setTimeout(() => {
                 $menuDiv.classList.remove("hidden")
-            }, 400);
+            }, 500);
     })
 }
