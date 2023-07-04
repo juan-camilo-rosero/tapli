@@ -1,0 +1,247 @@
+*{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+:root{
+    --primary-color: #320F00;
+    --secondary-color: #E8D2B2;
+    --third-color: rgba(0,0,0,0.6);
+}
+
+html{
+    scroll-behavior: smooth;
+    background-color: var(--primary-color);
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.none{
+    display: none !important;
+}
+
+/*Header*/
+
+header{
+    width: 100vw;
+    height: 15vh;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: 2.5rem;
+    color: var(--secondary-color);
+}
+
+/*Main*/
+
+main{
+    width: 100vw;
+    background-color: var(--secondary-color);
+    min-height: 85vh;
+    border-radius: 2rem 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Hero section*/
+
+.landing-content{
+    transition: .5s;
+}
+
+#hero-section{
+    height: 85vh;
+    border-bottom: var(--primary-color) .2rem solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+#hero-section h2{
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    text-align: center;
+    width: 75vw;
+    font-weight: 400;
+    margin-bottom: 3rem;
+}
+
+#hero-section b{
+    font-weight: 900;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#hero-section button, #hero-section a, .contact-btn{
+    width: calc(75vw - 3rem);
+    padding: 1rem 1.5rem;
+    border-radius: 50rem;
+    border: none;
+    font-size: 2rem;
+    margin: 2rem 0;
+    cursor: pointer;
+}
+
+#hero-section .try-now, .contact-btn{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+#hero-section .see-more{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: .2rem solid var(--primary-color);
+    text-align: center;
+    width: calc(75vw - 6rem);
+    text-decoration: none;
+}
+
+/*How it works*/
+
+#how-it-works{
+    padding: 4rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: var(--primary-color) .2rem solid;
+    width: 100vw;
+}
+
+#how-it-works h2, #contact h2{
+    width: 75vw;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
+}
+
+#how-it-works p{
+    width: 75vw;
+    text-align: center;
+    font-size: 1.7rem;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
+}
+
+/*Contact*/
+
+#contact{
+    width: 100vw;
+    padding: 4rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contact-btn{
+    font-size: 1.8rem;
+}
+
+/*Name*/
+
+.name{
+    transition: .5s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.name h2{
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    text-align: center;
+    width: 75vw;
+    font-weight: 400;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
+
+.name input{
+    width: calc(75vw - 3rem);
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+    outline: none;
+    border: .2rem solid var(--primary-color);
+    background-color: var(--secondary-color);
+    border-radius: 5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.name-continue{
+    width: 75vw;
+    background-color: var(--primary-color);
+    font-size: 2rem;
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 5rem;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+}
+
+
+
+/*----- Responsive -----*/
+
+@media (min-width: 1000px){
+
+    /*Header*/
+
+    header h1{
+        font-size: 3rem;
+    }
+
+    /*Hero section*/
+
+    #hero-section h2{
+        font-size: 3.5rem;
+        width: 70vw;
+        margin-bottom: 5rem;
+    }
+
+    .buttons{
+        flex-direction: row;
+        width: 75vw;
+        justify-content: space-around;
+    }
+
+    #hero-section button, #hero-section a, #contact button{
+        width: 25vw;
+        font-size: 2.5rem;
+    }
+
+    .see-more{
+        width: 25vw !important;
+    }
+
+    /*How it works*/
+
+    #how-it-works h2, #contact h2{
+        font-size: 3.5rem;
+    }
+
+    #how-it-works p{
+        font-size: 2.5rem;
+        font-weight: 300;
+    }
+
+    /*Contact*/
+
+    #contact button{
+        font-size: 2.5rem;
+    }
+}
