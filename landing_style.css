@@ -193,6 +193,34 @@ main{
     cursor: pointer;
 }
 
+/*Menu section*/
+
+.menu-sec{
+    transition: .5s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-sec button{
+    background-color: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 3rem;
+}
+
+.menu-title{
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 400;
+    width: 75vw;
+    text-align: center;
+    border-bottom: var(--primary-color) solid .2rem;
+    padding: 3rem 12.5vw;
+}
 
 
 /*----- Responsive -----*/
@@ -243,5 +271,19 @@ main{
 
     #contact button{
         font-size: 2.5rem;
+    }
+
+    /*Name*/
+
+    .name h2{
+        font-size: 3rem;
+    }
+
+    .name input{
+        width: 50vw;
+    }
+
+    .name-continue{
+        width: 25vw;
     }
 }
