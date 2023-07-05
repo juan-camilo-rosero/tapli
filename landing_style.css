@@ -22,6 +22,10 @@ html{
     display: none !important;
 }
 
+input{
+    outline: none;
+}
+
 /*Header*/
 
 header{
@@ -34,9 +38,14 @@ header{
 }
 
 h1{
-    font-family: 2.5rem;
     color: var(--secondary-color);
+    margin-right: 1rem;
 }
+
+header img{
+    height: 3rem;
+}
+
 
 /*Main*/
 
@@ -173,7 +182,6 @@ main{
     width: calc(75vw - 3rem);
     padding: 1rem 1.5rem;
     font-size: 2rem;
-    outline: none;
     border: .2rem solid var(--primary-color);
     background-color: var(--secondary-color);
     border-radius: 5rem;
@@ -202,7 +210,7 @@ main{
     flex-direction: column;
 }
 
-.menu-sec button{
+.return{
     background-color: transparent;
     border: none;
     color: var(--primary-color);
@@ -220,6 +228,107 @@ main{
     text-align: center;
     border-bottom: var(--primary-color) solid .2rem;
     padding: 3rem 12.5vw;
+}
+
+.add-cat{
+    color: var(--primary-color);
+    width: 75vw;
+    padding: 1rem 0;
+    font-size: 1.7rem;
+    border: var(--primary-color) solid .2rem;
+    background-color: var(--secondary-color);
+    border-radius: 5rem;
+    margin-top: 4rem;
+    cursor: pointer;
+}
+
+/*Pop-up*/
+
+.popup-div{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 100;
+    display: flex;
+    transition: .5s;
+    justify-content: center;
+}
+
+.popup{
+    width: 90vw;
+    min-height: 80vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    border-radius: 3rem;
+    background-color: var(--secondary-color);
+}
+
+.popup-close{
+    width: 3.5rem;
+    height: 3.5rem;
+    border: var(--primary-color) solid .2rem;
+    border-radius: 5rem;
+    margin-left:calc(90vw - 5rem);
+    margin-top: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-close img{
+    width: 40%;
+}
+
+.popup-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(80vh - 6rem);
+}
+
+.popup h2{
+    width: 90%;
+    color: var(--primary-color);
+    font-size: 2.3rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.popup p{
+    width: 90%;
+    color: var(--third-color);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.category-input{
+    margin-top: 4rem;
+    width: 70%;
+    padding: 1rem 5%;
+    border: var(--primary-color) solid .2rem;
+    font-size: 2rem;
+    border-radius: 5rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.popup button{
+    width: 80%;
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 5rem;
+    margin-top: 3rem;
+    border: none;
+    cursor: pointer;
 }
 
 

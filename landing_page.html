@@ -13,7 +13,7 @@
 <body>
     <header>
         <h1>KirbyApp</h1>
-        <img src="#" alt="Logo">
+        <img src="logo-light.png" alt="Logo">
     </header>
     <main>
         <div class="landing-content">
@@ -44,6 +44,22 @@
         <div class="menu-sec none hidden">
             <button class="return"><- Pregunta anterior</button>
             <h2 class="menu-title">Ahora armemos tu <b>menú</b></h2>
+
+            <button class="add-cat">Añadir categoría</button>
+        </div>
+
+        <div class="popup-div hidden none">
+            <div class="popup">
+                <div class="popup-close">
+                    <img src="close.png" alt="X">
+                </div>
+                <div class="popup-content category none">
+                    <h2>¿Qué categoría quieres añadir?</h2>
+                    <p>Por ejemplo: Entradas, Platos fuertes, Postres...</p>
+                    <input type="text" class="category-input">
+                    <button class="create-cat">Continuar</button>
+                </div>
+            </div>
         </div>
     </main>
 

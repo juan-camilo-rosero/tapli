@@ -29,3 +29,43 @@ export function getMenu() {
         ls.setItem("menu", JSON.stringify({}))
     }
 }
+
+export function createCategory(btn, popup, input) {
+    const $btn = d.querySelector(btn),
+    $popup = d.querySelector(popup),
+    $categoryContent = d.querySelector(".category"),
+    $input = d.querySelector(input)
+
+    $btn.addEventListener("click", e => {
+        let menu = getData("menu")
+        if($input.vale != ""){
+            let key = $input.value.toLowerCase()
+            key = key.replace(/[^a-z0-9]/g, '')
+            key = key.replace(/\s/g, '_')
+
+            if(Object.prototype.hasOwnProperty.call(menu, key)){
+                alert("Esa categoría ya existe")
+            }
+            else{
+                console.log(key);
+                menu[key] = []
+                if(Object.prototype.hasOwnProperty.call(menu, "options_names")){
+                    menu.options.push($input.value)
+                    menu.options_names.push(key)
+                }
+                else{
+                    menu.options = [$input.value]
+                    menu.options_names = [key]
+                }
+                ls.setItem("menu", JSON.stringify(menu))
+
+                $popup.classList.add("hidden")
+                setTimeout(() => {
+                    $popup.classList.add("none")
+                    $categoryContent.classList.add("none")
+                }
+                , 500);
+            }
+        }
+    })
+}

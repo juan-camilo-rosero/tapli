@@ -26,6 +26,7 @@ export function transitionMenu(btn) {
     $title = d.querySelector("h1")
 
     $btn.addEventListener("click", e => {
+        console.log("uwun't");
         if($input.value != ""){
             $name.classList.add("hidden")
             setTimeout(() => {
@@ -39,7 +40,7 @@ export function transitionMenu(btn) {
             ls.setItem("menu", JSON.stringify({
                 name: $input.value
             }))
-            $title.textContent = $input.value // Cambiar el título por el nombre del restaurante
+            $title.textContent = $input.value
         }
         else{
             alert("Debes introducir el nombre de tu restaurante")
@@ -67,5 +68,33 @@ export function returnPage() {
                 $name.classList.remove("hidden")
             }, 500);
         }
+    })
+}
+
+export function closePopup(closeBtn, popup) {
+    const $btn = d.querySelector(closeBtn),
+    $popup = d.querySelector(popup),
+    $categoryContent = d.querySelector(".category")
+
+    $btn.addEventListener("click", e => {
+        $popup.classList.add("hidden")
+        setTimeout(() => {
+            $popup.classList.add("none")
+            $categoryContent.classList.add("none")
+        }
+        , 500);
+    })
+}
+
+export function openCatPopup(btn, popup) {
+    const $btn = d.querySelector(btn),
+    $popup = d.querySelector(popup),
+    $categoryContent = d.querySelector(".category")
+
+    $btn.addEventListener("click", e => {
+        $popup.classList.remove("none")
+        $categoryContent.classList.remove("none")
+        setTimeout(() => $popup.classList.remove("hidden")
+        , 100);
     })
 }
