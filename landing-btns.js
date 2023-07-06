@@ -30,7 +30,6 @@ export function transitionMenu(btn) {
     $btn.addEventListener("click", e => {
         if($input.value != ""){
             const menuObj = getData("menu")
-            console.log(menuObj);
             menuObj.name = $input.value
             ls.setItem("menu", JSON.stringify(menuObj))
             $name.classList.add("hidden")
@@ -114,11 +113,9 @@ export function deleteCat(btns) {
                 if(confirmVal){
                     let titleIndex = menu.options.indexOf($title.textContent),
                     key = menu.options_names[titleIndex]
-                    console.log(menu);
                     menu.options.splice(titleIndex, 1)
                     menu.options_names.splice(titleIndex, 1)
                     delete menu[key]
-                    console.log(menu);
                     ls.setItem("menu", JSON.stringify(menu))
                     $grandParent.removeChild($parent)
                 }
@@ -127,6 +124,32 @@ export function deleteCat(btns) {
             }
         })
     });
+}
+
+export function deleteCatBtn(btns) {
+    const $btns = d.querySelectorAll(btns),
+    $lastBtn = $btns[$btns.length - 1],
+    $parent = $lastBtn.parentNode,
+    $title = $lastBtn.nextSibling,
+    $grandParent = $parent.parentNode,
+    menu = getData("menu")
+
+    $lastBtn.addEventListener("click", e => {
+        let confirmVal = confirm("Quieres eliminar la categoría " + $title.textContent + "?")
+        try {
+            if(confirmVal){
+                let titleIndex = menu.options.indexOf($title.textContent),
+                key = menu.options_names[titleIndex]
+                menu.options.splice(titleIndex, 1)
+                menu.options_names.splice(titleIndex, 1)
+                delete menu[key]
+                ls.setItem("menu", JSON.stringify(menu))
+                $grandParent.removeChild($parent)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    })
 }
 
 export function createCatDiv(name, products) {
@@ -159,5 +182,5 @@ export function createCatDiv(name, products) {
     $div.appendChild($btn)
     $categoriesDiv.appendChild($div)
 
-    deleteCat(".delete-cat")
+    deleteCatBtn(".delete-cat")
 }
