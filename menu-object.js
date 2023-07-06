@@ -30,7 +30,7 @@ export function getMenu() {
     }
 }
 
-export function createCategory(btn, popup, input) {
+export function createCategory(btn, popup, input, createDiv) {
     const $btn = d.querySelector(btn),
     $popup = d.querySelector(popup),
     $categoryContent = d.querySelector(".category"),
@@ -58,6 +58,10 @@ export function createCategory(btn, popup, input) {
                     menu.options_names = [key]
                 }
                 ls.setItem("menu", JSON.stringify(menu))
+
+                createDiv($input.value, [])
+
+                $input.value = ""
 
                 $popup.classList.add("hidden")
                 setTimeout(() => {

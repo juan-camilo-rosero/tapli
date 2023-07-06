@@ -1,3 +1,5 @@
+import { getData } from "./ls.js";
+
 const d = document,
 ls = localStorage
 
@@ -26,8 +28,11 @@ export function transitionMenu(btn) {
     $title = d.querySelector("h1")
 
     $btn.addEventListener("click", e => {
-        console.log("uwun't");
         if($input.value != ""){
+            const menuObj = getData("menu")
+            console.log(menuObj);
+            menuObj.name = $input.value
+            ls.setItem("menu", JSON.stringify(menuObj))
             $name.classList.add("hidden")
             setTimeout(() => {
                 $name.classList.add("none")
@@ -36,10 +41,6 @@ export function transitionMenu(btn) {
             setTimeout(() => {
                 $menuSec.classList.remove("hidden")
             }, 500);
-
-            ls.setItem("menu", JSON.stringify({
-                name: $input.value
-            }))
             $title.textContent = $input.value
         }
         else{
@@ -97,4 +98,66 @@ export function openCatPopup(btn, popup) {
         setTimeout(() => $popup.classList.remove("hidden")
         , 100);
     })
+}
+
+export function deleteCat(btns) {
+    const $btns = d.querySelectorAll(btns),
+    menu = getData("menu")
+
+    $btns.forEach($btn => {
+        const $parent = $btn.parentNode,
+        $title = $btn.nextSibling,
+        $grandParent = $parent.parentNode
+        $btn.addEventListener("click", e => {
+            let confirmVal = confirm("Quieres eliminar la categoría " + $title.textContent + "?")
+            try {
+                if(confirmVal){
+                    let titleIndex = menu.options.indexOf($title.textContent),
+                    key = menu.options_names[titleIndex]
+                    console.log(menu);
+                    menu.options.splice(titleIndex, 1)
+                    menu.options_names.splice(titleIndex, 1)
+                    delete menu[key]
+                    console.log(menu);
+                    ls.setItem("menu", JSON.stringify(menu))
+                    $grandParent.removeChild($parent)
+                }
+            } catch (error) {
+                console.log("El confirm me cae mal, lo debo cambiar en algún momento :3");
+            }
+        })
+    });
+}
+
+export function createCatDiv(name, products) {
+    const $div = d.createElement("div"),
+    $title = d.createElement("h3"),
+    $delete = d.createElement("img"),
+    $categoriesDiv = d.querySelector(".categories"),
+    $productsDiv = d.createElement("div"),
+    $btn = d.createElement("button")
+    
+    $div.classList.add("cat-div")
+
+    $delete.setAttribute("src", "delete.png")
+    $delete.setAttribute("alt", "Borrar categoría")
+
+    $delete.classList.add("delete-cat")
+    
+    $title.classList.add("cat-title")
+    $title.textContent = name
+
+    $btn.classList.add("add-product")
+
+    $productsDiv.classList.add("products")
+
+    $btn.textContent = "Añadir producto"
+
+    $div.appendChild($delete)
+    $div.appendChild($title)
+    $div.appendChild($productsDiv)
+    $div.appendChild($btn)
+    $categoriesDiv.appendChild($div)
+
+    deleteCat(".delete-cat")
 }
