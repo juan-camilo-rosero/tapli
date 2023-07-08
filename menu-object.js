@@ -1,3 +1,4 @@
+import { createProductPopup, deleteCatBtn } from "./landing-btns.js"
 import { getData } from "./ls.js"
 
 const d = document,
@@ -47,7 +48,6 @@ export function createCategory(btn, popup, input, createDiv) {
                 alert("Esa categoría ya existe")
             }
             else{
-                console.log(key);
                 menu[key] = []
                 if(Object.prototype.hasOwnProperty.call(menu, "options_names")){
                     menu.options.push($input.value)
@@ -72,4 +72,48 @@ export function createCategory(btn, popup, input, createDiv) {
             }
         }
     })
+}
+
+export function loadCat(){
+    const menu = getData("menu"),
+    $categoriesDiv = d.querySelector(".categories")
+    
+    if(Object.prototype.hasOwnProperty.call(menu, "options")){
+        const options = menu.options
+        options.forEach(option => {
+            const $div = d.createElement("div"),
+            $title = d.createElement("h3"),
+            $delete = d.createElement("img"),
+            $productsDiv = d.createElement("div"),
+            $btn = d.createElement("button")
+    
+            $div.classList.add("cat-div")
+    
+            $delete.setAttribute("src", "delete.png")
+            $delete.setAttribute("alt", "Borrar categoría")
+    
+            $delete.classList.add("delete-cat")
+            
+            $title.classList.add("cat-title")
+            $title.textContent = option
+    
+            $btn.classList.add("add-product")
+    
+            $productsDiv.classList.add("products")
+    
+            $btn.textContent = "Añadir producto"
+    
+            $div.appendChild($delete)
+            $div.appendChild($title)
+            $div.appendChild($productsDiv)
+            $div.appendChild($btn)
+            $categoriesDiv.appendChild($div)
+    
+            $btn.addEventListener("click", e => {
+                createProductPopup(e.target)
+            })
+            deleteCatBtn(".delete-cat")
+    
+        });
+    }
 }

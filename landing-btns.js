@@ -131,24 +131,21 @@ export function deleteCatBtn(btns) {
     $lastBtn = $btns[$btns.length - 1],
     $parent = $lastBtn.parentNode,
     $title = $lastBtn.nextSibling,
-    $grandParent = $parent.parentNode,
-    menu = getData("menu")
+    $grandParent = $parent.parentNode
+    let menu = getData("menu")
 
     $lastBtn.addEventListener("click", e => {
         let confirmVal = confirm("Quieres eliminar la categoría " + $title.textContent + "?")
-        try {
-            if(confirmVal){
-                let titleIndex = menu.options.indexOf($title.textContent),
-                key = menu.options_names[titleIndex]
-                menu.options.splice(titleIndex, 1)
-                menu.options_names.splice(titleIndex, 1)
-                delete menu[key]
-                ls.setItem("menu", JSON.stringify(menu))
-                $grandParent.removeChild($parent)
+        if(confirmVal){
+            menu = getData("menu")
+            let titleIndex = menu.options.indexOf($title.textContent),
+            key = menu.options_names[titleIndex]
+            menu.options.splice(titleIndex, 1)
+            menu.options_names.splice(titleIndex, 1)
+            delete menu[key]
+            ls.setItem("menu", JSON.stringify(menu))
+            $grandParent.removeChild($parent)
             }
-        } catch (error) {
-            console.log(error);
-        }
     })
 }
 
@@ -182,5 +179,36 @@ export function createCatDiv(name, products) {
     $div.appendChild($btn)
     $categoriesDiv.appendChild($div)
 
+    $btn.addEventListener("click", e => {
+        createProductPopup(e.target)
+    })
     deleteCatBtn(".delete-cat")
+}
+
+export function createProductPopup(btn) {
+
+    const $btn = btn,
+    $parent = $btn.parentNode,
+    $deleteBtn = $parent.firstChild,
+    title = $deleteBtn.nextSibling.textContent,
+    $popup = d.querySelector(".popup-div"),
+    $productContent = d.querySelector(".product")
+
+    let menu = getData("menu")
+
+    $popup.classList.remove("none")
+    $productContent.classList.remove("none")
+    setTimeout(() => $popup.classList.remove("hidden")
+    , 100);
+
+    $popup.setAttribute("data-category", title)
+}
+
+export function createProductBtn(btn) {
+    const $btn = d.querySelector(btn),
+    $popup = d.querySelector(".popup-div")
+
+    $btn.addEventListener("click", e => {
+        console.log($popup.getAttribute("data-category"));
+    })
 }

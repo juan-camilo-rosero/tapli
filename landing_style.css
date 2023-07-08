@@ -26,6 +26,11 @@ input{
     outline: none;
 }
 
+p::selection, h1::selection, h2::selection, input::selection, button::selection, b::selection, h3::selection{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
 /*Header*/
 
 header{
@@ -334,7 +339,7 @@ main{
     margin-top: 1.5rem;
 }
 
-.category-input{
+.category-input, .product-input{
     margin-top: 4rem;
     width: 70%;
     padding: 1rem 5%;
