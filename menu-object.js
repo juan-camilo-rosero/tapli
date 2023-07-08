@@ -48,7 +48,11 @@ export function createCategory(btn, popup, input, createDiv) {
                 alert("Esa categoría ya existe")
             }
             else{
-                menu[key] = []
+                menu[key] = {
+                    options: [],
+                    descriptions: [],
+                    prices: []
+                }
                 if(Object.prototype.hasOwnProperty.call(menu, "options_names")){
                     menu.options.push($input.value)
                     menu.options_names.push(key)
@@ -59,7 +63,11 @@ export function createCategory(btn, popup, input, createDiv) {
                 }
                 ls.setItem("menu", JSON.stringify(menu))
 
-                createDiv($input.value, [])
+                createDiv($input.value, {
+                    options: [],
+                    descriptions: [],
+                    prices: []
+                })
 
                 $input.value = ""
 
@@ -101,7 +109,7 @@ export function loadCat(){
     
             $productsDiv.classList.add("products")
     
-            $btn.textContent = "Añadir producto"
+            $btn.textContent = "Añadir plato"
     
             $div.appendChild($delete)
             $div.appendChild($title)
@@ -116,4 +124,28 @@ export function loadCat(){
     
         });
     }
+}
+
+export function createProduct(btn) {
+    const $btn = d.querySelector(btn),
+    $popup = d.querySelector(".popup-div")
+
+    $btn.addEventListener("click", e => {
+        const category = $popup.getAttribute("data-category"),
+        $name = d.querySelector(".product-name"),
+        $price = d.querySelector(".product-price"),
+        $desc = d.querySelector(".product-desc"),
+        menu = getData("menu"),
+        index = menu.options.indexOf(category),
+        objName = menu.options_names[index]
+
+        if($name.value != "" && $price.value != ""){
+            menu[objName].options.push($name.value)
+            menu[objName].prices.push($price.value)
+            menu[objName].descriptions.push($desc.value)
+    
+            ls.setItem("menu", JSON.stringify(menu))
+        }
+        else alert("Dejaste algún campo vacío")
+    })
 }

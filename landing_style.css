@@ -339,7 +339,7 @@ main{
     margin-top: 1.5rem;
 }
 
-.category-input, .product-input{
+.category-input{
     margin-top: 4rem;
     width: 70%;
     padding: 1rem 5%;
@@ -349,6 +349,22 @@ main{
     background-color: var(--secondary-color);
     color: var(--primary-color);
     text-align: center;
+}
+
+.product-input{
+    margin-top: 1.5rem;
+    width: 70%;
+    padding: 1rem 5%;
+    border: var(--primary-color) solid .2rem;
+    font-size: 1.5rem;
+    border-radius: 5rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.product-title{
+    font-size: 1.75rem;
 }
 
 .popup button{

@@ -171,7 +171,7 @@ export function createCatDiv(name, products) {
 
     $productsDiv.classList.add("products")
 
-    $btn.textContent = "Añadir producto"
+    $btn.textContent = "Añadir plato"
 
     $div.appendChild($delete)
     $div.appendChild($title)
@@ -194,8 +194,6 @@ export function createProductPopup(btn) {
     $popup = d.querySelector(".popup-div"),
     $productContent = d.querySelector(".product")
 
-    let menu = getData("menu")
-
     $popup.classList.remove("none")
     $productContent.classList.remove("none")
     setTimeout(() => $popup.classList.remove("hidden")
@@ -206,9 +204,18 @@ export function createProductPopup(btn) {
 
 export function createProductBtn(btn) {
     const $btn = d.querySelector(btn),
-    $popup = d.querySelector(".popup-div")
+    $popup = d.querySelector(".popup-div"),
+    $productContent = d.querySelector(".product"),
+    $name = d.querySelector(".product-name"),
+    $price = d.querySelector(".product-price")
 
     $btn.addEventListener("click", e => {
-        console.log($popup.getAttribute("data-category"));
+        if($name.value != "" && $price.value != ""){
+            $popup.classList.add("hidden")
+            setTimeout(() => {
+            $popup.classList.add("none")
+            $productContent.classList.add("none")
+            }, 500)
+        }
     })
 }
