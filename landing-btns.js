@@ -207,7 +207,8 @@ export function createProductBtn(btn) {
     $popup = d.querySelector(".popup-div"),
     $productContent = d.querySelector(".product"),
     $name = d.querySelector(".product-name"),
-    $price = d.querySelector(".product-price")
+    $price = d.querySelector(".product-price"),
+    $desc = d.querySelector(".product-desc")
 
     $btn.addEventListener("click", e => {
         if($name.value != "" && $price.value != ""){
@@ -216,6 +217,10 @@ export function createProductBtn(btn) {
             $popup.classList.add("none")
             $productContent.classList.add("none")
             }, 500)
+
+            $name.value = ""
+            $price.value = ""
+            $desc.value = ""
         }
     })
 }
