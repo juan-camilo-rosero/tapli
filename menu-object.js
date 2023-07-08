@@ -1,4 +1,4 @@
-import { createProductPopup, deleteCatBtn } from "./landing-btns.js"
+import { createProductDiv, createProductPopup, deleteCatBtn } from "./landing-btns.js"
 import { getData } from "./ls.js"
 
 const d = document,
@@ -63,11 +63,7 @@ export function createCategory(btn, popup, input, createDiv) {
                 }
                 ls.setItem("menu", JSON.stringify(menu))
 
-                createDiv($input.value, {
-                    options: [],
-                    descriptions: [],
-                    prices: []
-                })
+                createDiv($input.value, $input.value)
 
                 $input.value = ""
 
@@ -96,6 +92,8 @@ export function loadCat(){
             $btn = d.createElement("button")
     
             $div.classList.add("cat-div")
+
+            $div.setAttribute("data-category", option)
     
             $delete.setAttribute("src", "delete.png")
             $delete.setAttribute("alt", "Borrar categoría")
@@ -145,6 +143,7 @@ export function createProduct(btn) {
             menu[objName].descriptions.push($desc.value)
     
             ls.setItem("menu", JSON.stringify(menu))
+            createProductDiv($name.value, $desc.value, $price.value, category)
         }
         else alert("Dejaste algún campo vacío")
     })

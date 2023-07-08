@@ -74,13 +74,19 @@ export function returnPage() {
 export function closePopup(closeBtn, popup) {
     const $btn = d.querySelector(closeBtn),
     $popup = d.querySelector(popup),
-    $categoryContent = d.querySelector(".category")
+    $categoryContent = d.querySelector(".category"),
+    $name = d.querySelector(".product-name"),
+    $price = d.querySelector(".product-price"),
+    $desc = d.querySelector(".product-desc")
 
     $btn.addEventListener("click", e => {
         $popup.classList.add("hidden")
         setTimeout(() => {
             $popup.classList.add("none")
             $categoryContent.classList.add("none")
+            $name.value = ""
+            $price.value = ""
+            $desc.value = ""
         }
         , 500);
     })
@@ -149,7 +155,7 @@ export function deleteCatBtn(btns) {
     })
 }
 
-export function createCatDiv(name, products) {
+export function createCatDiv(name, catName) {
     const $div = d.createElement("div"),
     $title = d.createElement("h3"),
     $delete = d.createElement("img"),
@@ -158,6 +164,9 @@ export function createCatDiv(name, products) {
     $btn = d.createElement("button")
     
     $div.classList.add("cat-div")
+
+    console.log(catName);
+    $div.setAttribute("data-category", catName)
 
     $delete.setAttribute("src", "delete.png")
     $delete.setAttribute("alt", "Borrar categoría")
@@ -223,4 +232,33 @@ export function createProductBtn(btn) {
             $desc.value = ""
         }
     })
+}
+
+export function createProductDiv(name, desc, price, category) {
+    const $div = d.createElement("div"),
+    $name = d.createElement("h3"),
+    $price = d.createElement("p"),
+    $desc = d.createElement("p"),
+    $deleteBtn = d.createElement("img"),
+    $productDiv = d.querySelector(`div[data-category=${category}] .products`)
+
+    $div.classList.add("product-div")
+    $name.classList.add("product-div-title")
+    $desc.classList.add("product-div-desc")
+    $price.classList.add("product-div-price")
+    $deleteBtn.classList.add("delete-product")
+
+    $deleteBtn.setAttribute("src", "delete.png")
+    $deleteBtn.setAttribute("alt", "Borrar plato")
+
+    $name.textContent = name
+    $price.textContent = price
+    $desc.textContent = desc
+
+    $div.appendChild($name)
+    $div.appendChild($desc)
+    $div.appendChild($price)
+    $div.appendChild($deleteBtn)
+
+    $productDiv.appendChild($div)
 }
