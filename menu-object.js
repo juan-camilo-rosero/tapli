@@ -150,43 +150,46 @@ export function createProduct(btn) {
 }
 
 export function loadProducts() {
-    const menu = getData("menu"),
-    options = menu.options_names,
-    optNames = menu.options
-
-    options.forEach((option, index) => {
-        const cat = menu[option],
-        catOptions = cat.options,
-        catPrices = cat.prices,
-        catDescriptions = cat.descriptions,
-        $productsDiv = d.querySelector(`div[data-category=${menu.options[index].replace(" ", "_")}] .products`)
-
-        catOptions.forEach((opt, i) => {
-            const $productDiv = d.createElement("div"),
-            $name = d.createElement("h3"),
-            $price = d.createElement("p"),
-            $desc = d.createElement("p"),
-            $deleteBtn = d.createElement("img")
-
-            $productDiv.classList.add("product-div")
-            $name.classList.add("product-div-title")
-            $desc.classList.add("product-div-desc")
-            $price.classList.add("product-div-price")
-            $deleteBtn.classList.add("delete-product")
-
-            $deleteBtn.setAttribute("src", "delete.png")
-            $deleteBtn.setAttribute("alt", "Borrar plato")
-
-            $name.textContent = catOptions[i]
-            $price.textContent = catPrices[i]
-            $desc.textContent = catDescriptions[i]
-
-            $productDiv.appendChild($name)
-            $productDiv.appendChild($desc)
-            $productDiv.appendChild($price)
-            $productDiv.appendChild($deleteBtn)
-
-            $productsDiv.appendChild($productDiv)
+    const menu = getData("menu")
+    if(Object.prototype.hasOwnProperty.call(menu, "options")){
+        const options = menu.options_names,
+        optNames = menu.options
+    
+        options.forEach((option, index) => {
+            const cat = menu[option],
+            catOptions = cat.options,
+            catPrices = cat.prices,
+            catDescriptions = cat.descriptions,
+            $productsDiv = d.querySelector(`div[data-category=${menu.options[index].replace(" ", "_")}] .products`)
+    
+            catOptions.forEach((opt, i) => {
+                const $productDiv = d.createElement("div"),
+                $name = d.createElement("h3"),
+                $price = d.createElement("p"),
+                $desc = d.createElement("p"),
+                $deleteBtn = d.createElement("img")
+    
+                $productDiv.classList.add("product-div")
+                $name.classList.add("product-div-title")
+                $desc.classList.add("product-div-desc")
+                $price.classList.add("product-div-price")
+                $deleteBtn.classList.add("delete-product")
+    
+                $deleteBtn.setAttribute("src", "delete.png")
+                $deleteBtn.setAttribute("alt", "Borrar plato")
+    
+                $name.textContent = catOptions[i]
+                $price.textContent = catPrices[i]
+                $desc.textContent = catDescriptions[i]
+    
+                $productDiv.appendChild($name)
+                $productDiv.appendChild($desc)
+                $productDiv.appendChild($price)
+                $productDiv.appendChild($deleteBtn)
+    
+                $productsDiv.appendChild($productDiv)
+            });
         });
-    });
+
+    }
 }
