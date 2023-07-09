@@ -261,6 +261,7 @@ main{
     border-radius: 5rem;
     margin-top: 1rem;
     opacity: 0.5;
+    border: none;
 }
 
 .active{
