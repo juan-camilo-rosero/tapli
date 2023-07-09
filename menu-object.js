@@ -188,8 +188,50 @@ export function loadProducts() {
                 $productDiv.appendChild($deleteBtn)
     
                 $productsDiv.appendChild($productDiv)
+
+                $deleteBtn.addEventListener("click", e => deleteProduct(e))
             });
         });
 
+    }
+}
+
+export function deleteProduct(e) {
+    const $btn = e.target,
+    $btnDiv = $btn.parentNode,
+    $products = $btnDiv.parentNode,
+    category = $btnDiv.parentNode.parentNode.getAttribute("data-category"),
+    name = $btnDiv.firstChild.textContent,
+    menu = getData("menu"),
+    indexCat = menu.options.indexOf(category),
+    obj = menu[menu.options_names[indexCat]],
+    indexProduct = obj.options.indexOf(name)
+
+    menu[menu.options_names[indexCat]].options.splice(indexProduct, 1)
+    menu[menu.options_names[indexCat]].prices.splice(indexProduct, 1)
+    menu[menu.options_names[indexCat]].descriptions.splice(indexProduct, 1)
+
+    ls.setItem("menu", JSON.stringify(menu))
+    $products.removeChild($btnDiv)
+    continueBtn()
+}
+
+export function continueBtn() {
+    const menu = getData("menu"),
+    keys = menu.options_names,
+    $btn = d.querySelector(".create-menu")
+
+    let isEmpty = true
+
+    keys.forEach(key => {
+        const len = menu[key].options.length
+        if(len > 0) isEmpty = false
+    });
+
+    if(isEmpty){
+        $btn.classList.remove("active")
+    }
+    else{
+        $btn.classList.add("active")
     }
 }

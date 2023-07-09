@@ -251,6 +251,23 @@ main{
     margin-bottom: 3rem;
 }
 
+.create-menu{
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+    width: 75vw;
+    padding: 1rem 0;
+    font-size: 1.7rem;
+    background-color: var(--primary-color);
+    border-radius: 5rem;
+    margin-top: 1rem;
+    opacity: 0.5;
+}
+
+.active{
+    opacity: 1;
+    cursor: pointer;
+}
+
 .cat-div{
     width: 100vw;
     padding: 2rem 0;

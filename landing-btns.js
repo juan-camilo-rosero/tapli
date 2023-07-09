@@ -1,4 +1,5 @@
 import { getData } from "./ls.js";
+import { continueBtn, deleteProduct } from "./menu-object.js";
 
 const d = document,
 ls = localStorage
@@ -151,6 +152,7 @@ export function deleteCatBtn(btns) {
             delete menu[key]
             ls.setItem("menu", JSON.stringify(menu))
             $grandParent.removeChild($parent)
+            continueBtn()
             }
     })
 }
@@ -230,6 +232,7 @@ export function createProductBtn(btn) {
             $name.value = ""
             $price.value = ""
             $desc.value = ""
+            continueBtn()
         }
     })
 }
@@ -261,4 +264,9 @@ export function createProductDiv(name, desc, price, category) {
     $div.appendChild($deleteBtn)
 
     $productDiv.appendChild($div)
+
+    $deleteBtn.addEventListener("click", e => {
+        deleteProduct(e)
+        continueBtn()
+    })
 }
