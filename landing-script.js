@@ -1,5 +1,5 @@
 import { closePopup, createCatDiv, createProductBtn, openCatPopup, returnPage, start, transitionMenu } from "./landing-btns.js"
-import { createCategory, getMenu, loadCat, createProduct} from "./menu-object.js"
+import { createCategory, getMenu, loadCat, createProduct, loadProducts} from "./menu-object.js"
 
 const d = document
 
@@ -7,6 +7,7 @@ start(".try-now")
 getMenu()
 transitionMenu(".name-continue")
 loadCat()
+loadProducts()
 returnPage()
 closePopup(".popup-close", ".popup-div")
 openCatPopup(".add-cat", ".popup-div")

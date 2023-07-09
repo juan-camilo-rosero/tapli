@@ -166,7 +166,7 @@ export function createCatDiv(name, catName) {
     $div.classList.add("cat-div")
 
     console.log(catName);
-    $div.setAttribute("data-category", catName)
+    $div.setAttribute("data-category", catName.replace(" ", "_"))
 
     $delete.setAttribute("src", "delete.png")
     $delete.setAttribute("alt", "Borrar categoría")
@@ -208,7 +208,7 @@ export function createProductPopup(btn) {
     setTimeout(() => $popup.classList.remove("hidden")
     , 100);
 
-    $popup.setAttribute("data-category", title)
+    $popup.setAttribute("data-category", title.replace(" ", "_"))
 }
 
 export function createProductBtn(btn) {
