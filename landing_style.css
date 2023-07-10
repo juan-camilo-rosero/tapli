@@ -164,16 +164,16 @@ main{
     font-size: 1.8rem;
 }
 
-/*Name*/
+/*Name & Mail*/
 
-.name{
+.name, .mail{
     transition: .5s;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.name h2{
+.name h2, .mail h2{
     color: var(--primary-color);
     font-size: 2.5rem;
     text-align: center;
@@ -183,7 +183,7 @@ main{
     margin-top: 5rem;
 }
 
-.name input{
+.name input, .mail input{
     width: calc(75vw - 3rem);
     padding: 1rem 1.5rem;
     font-size: 2rem;
@@ -195,7 +195,7 @@ main{
     margin-bottom: 5rem;
 }
 
-.name-continue{
+.name-continue, .mail-continue{
     width: 75vw;
     background-color: var(--primary-color);
     font-size: 2rem;
@@ -204,6 +204,13 @@ main{
     border-radius: 5rem;
     padding: 1rem 1.5rem;
     cursor: pointer;
+}
+
+.mail form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /*Menu section*/
@@ -215,7 +222,7 @@ main{
     flex-direction: column;
 }
 
-.return{
+.return, .return-menu{
     background-color: transparent;
     border: none;
     color: var(--primary-color);
@@ -261,12 +268,12 @@ main{
     border-radius: 5rem;
     margin-top: 1rem;
     opacity: 0.5;
+    cursor: pointer;
     border: none;
 }
 
 .active{
     opacity: 1;
-    cursor: pointer;
 }
 
 .cat-div{
@@ -319,6 +326,7 @@ main{
     color: var(--third-color);
     text-align: center;
     margin-bottom: 1.5rem;
+    padding: 0 1rem;
 }
 
 .product-div-price{
@@ -439,6 +447,34 @@ main{
     cursor: pointer;
 }
 
+/*Thanks*/
+
+.thanks h2{
+    text-align: center;
+    padding: 0 1.5rem 6rem 1.5rem;
+    font-weight: 400;
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.center-content{
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.thanks a{
+    text-align: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5rem;
+    font-size: 2rem;
+}
 
 /*----- Responsive -----*/
 

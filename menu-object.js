@@ -1,4 +1,4 @@
-import { createProductDiv, createProductPopup, deleteCatBtn } from "./landing-btns.js"
+import { continueBtn, createProductDiv, createProductPopup, deleteCatBtn } from "./landing-btns.js"
 import { getData } from "./ls.js"
 
 const d = document,
@@ -161,38 +161,41 @@ export function loadProducts() {
             catPrices = cat.prices,
             catDescriptions = cat.descriptions,
             $productsDiv = d.querySelector(`div[data-category=${menu.options[index].replace(" ", "_")}] .products`)
+            try {
+                catOptions.forEach((opt, i) => {
+                    const $productDiv = d.createElement("div"),
+                    $name = d.createElement("h3"),
+                    $price = d.createElement("p"),
+                    $desc = d.createElement("p"),
+                    $deleteBtn = d.createElement("img")
+        
+                    $productDiv.classList.add("product-div")
+                    $name.classList.add("product-div-title")
+                    $desc.classList.add("product-div-desc")
+                    $price.classList.add("product-div-price")
+                    $deleteBtn.classList.add("delete-product")
+        
+                    $deleteBtn.setAttribute("src", "delete.png")
+                    $deleteBtn.setAttribute("alt", "Borrar plato")
+        
+                    $name.textContent = catOptions[i]
+                    $price.textContent = catPrices[i]
+                    $desc.textContent = catDescriptions[i]
+        
+                    $productDiv.appendChild($name)
+                    $productDiv.appendChild($desc)
+                    $productDiv.appendChild($price)
+                    $productDiv.appendChild($deleteBtn)
+        
+                    $productsDiv.appendChild($productDiv)
     
-            catOptions.forEach((opt, i) => {
-                const $productDiv = d.createElement("div"),
-                $name = d.createElement("h3"),
-                $price = d.createElement("p"),
-                $desc = d.createElement("p"),
-                $deleteBtn = d.createElement("img")
-    
-                $productDiv.classList.add("product-div")
-                $name.classList.add("product-div-title")
-                $desc.classList.add("product-div-desc")
-                $price.classList.add("product-div-price")
-                $deleteBtn.classList.add("delete-product")
-    
-                $deleteBtn.setAttribute("src", "delete.png")
-                $deleteBtn.setAttribute("alt", "Borrar plato")
-    
-                $name.textContent = catOptions[i]
-                $price.textContent = catPrices[i]
-                $desc.textContent = catDescriptions[i]
-    
-                $productDiv.appendChild($name)
-                $productDiv.appendChild($desc)
-                $productDiv.appendChild($price)
-                $productDiv.appendChild($deleteBtn)
-    
-                $productsDiv.appendChild($productDiv)
-
-                $deleteBtn.addEventListener("click", e => deleteProduct(e))
+                    $deleteBtn.addEventListener("click", e => deleteProduct(e))
+                });
+            } catch (error) {
+                console.log(error);
+            }
             });
-        });
-
+        continueBtn()
     }
 }
 
@@ -214,24 +217,4 @@ export function deleteProduct(e) {
     ls.setItem("menu", JSON.stringify(menu))
     $products.removeChild($btnDiv)
     continueBtn()
-}
-
-export function continueBtn() {
-    const menu = getData("menu"),
-    keys = menu.options_names,
-    $btn = d.querySelector(".create-menu")
-
-    let isEmpty = true
-
-    keys.forEach(key => {
-        const len = menu[key].options.length
-        if(len > 0) isEmpty = false
-    });
-
-    if(isEmpty){
-        $btn.classList.remove("active")
-    }
-    else{
-        $btn.classList.add("active")
-    }
 }

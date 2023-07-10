@@ -1,5 +1,5 @@
 import { getData } from "./ls.js";
-import { continueBtn, deleteProduct } from "./menu-object.js";
+import {deleteProduct } from "./menu-object.js";
 
 const d = document,
 ls = localStorage
@@ -61,13 +61,13 @@ export function returnPage() {
 
         else{
             $menuSec.classList.add("hidden")
-            setTimeout(() => {
-                $menuSec.classList.add("none")
-            }, 500);
+        setTimeout(() => {
+            $menuSec.classList.add("none")
             $name.classList.remove("none")
-            setTimeout(() => {
-                $name.classList.remove("hidden")
-            }, 500);
+        }, 500);
+        setTimeout(() => {
+            $name.classList.remove("hidden")
+        }, 600);
         }
     })
 }
@@ -167,7 +167,6 @@ export function createCatDiv(name, catName) {
     
     $div.classList.add("cat-div")
 
-    console.log(catName);
     $div.setAttribute("data-category", catName.replace(" ", "_"))
 
     $delete.setAttribute("src", "delete.png")
@@ -194,6 +193,7 @@ export function createCatDiv(name, catName) {
         createProductPopup(e.target)
     })
     deleteCatBtn(".delete-cat")
+    continueBtn()
 }
 
 export function createProductPopup(btn) {
@@ -269,4 +269,68 @@ export function createProductDiv(name, desc, price, category) {
         deleteProduct(e)
         continueBtn()
     })
+}
+
+export function transitionMail(btn) {
+    const $btn = d.querySelector(btn),
+    $menuSec = d.querySelector(".menu-sec"),
+    $mailSec = d.querySelector(".mail")
+
+    $btn.addEventListener("click", e => {
+        if($btn.classList.contains("active")){
+            $menuSec.classList.add("hidden")
+            setTimeout(() => {
+                $menuSec.classList.add("none")
+            }, 500);
+            $mailSec.classList.remove("none")
+            setTimeout(() => {
+                $mailSec.classList.remove("hidden")
+            }, 500);
+        }
+        else alert("No has creado ninguna sección o hay alguna sección vacía")
+    })
+}
+
+export function returnToMenu() {
+    const $mailSec = d.querySelector(".mail"),
+    $menuSec = d.querySelector(".menu-sec"),
+    $btn = d.querySelector(".return-menu")
+
+    $btn.addEventListener("click", e => {
+        $mailSec.classList.add("hidden")
+        setTimeout(() => {
+            $mailSec.classList.add("none")
+            $menuSec.classList.remove("none")
+        }, 500);
+        setTimeout(() => {
+            $menuSec.classList.remove("hidden")
+        }, 600);
+    })
+}
+
+export function continueBtn() {
+    const menu = getData("menu"),
+    keys = menu.options_names,
+    $btn = d.querySelector(".create-menu"),
+    $menuInput = d.querySelector(".menu-input")
+
+    let isEmpty = false
+
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i],
+        len = menu[key].options.length
+        if(len == 0) {
+        isEmpty = true
+        break
+        }
+    }
+
+    if(isEmpty) $btn.classList.remove("active")
+    else {
+        $btn.classList.add("active")
+        const menu = getData("menu")
+        $menuInput.value = JSON.stringify(menu)
+    }
+
+    if(menu.options_names.length == 0) $btn.classList.remove("active")
 }
