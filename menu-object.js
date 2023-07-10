@@ -137,6 +137,8 @@ export function createProduct(btn) {
         index = menu.options.indexOf(category),
         objName = menu.options_names[index]
 
+        console.log(objName);
+
         if($name.value != "" && $price.value != ""){
             menu[objName].options.push($name.value)
             menu[objName].prices.push($price.value)
