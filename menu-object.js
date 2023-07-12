@@ -41,7 +41,7 @@ export function createCategory(btn, popup, input, createDiv) {
         let menu = getData("menu")
         if($input.vale != ""){
             let key = $input.value.toLowerCase()
-            key = key.replace(/[^a-z0-9]/g, '')
+            key = key.replace(/[^a-z0-9 ]/g, '')
             key = key.replace(/\s/g, '_')
 
             if(Object.prototype.hasOwnProperty.call(menu, key)){
