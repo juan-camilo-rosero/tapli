@@ -483,7 +483,12 @@ main{
     /*Header*/
 
     header h1{
-        font-size: 3rem;
+        font-size: 2.25rem;
+    }
+
+    header img{
+        width: 2rem;
+        height: auto;
     }
 
     /*Hero section*/
@@ -528,15 +533,161 @@ main{
 
     /*Name*/
 
-    .name h2{
-        font-size: 3rem;
+    .name h2, .mail h2{
+        font-size: 2.5rem;
     }
 
-    .name input{
+    .name input, .mail input{
+        width: 40vw;
+        padding: .75rem 2rem;
+    }
+
+    .name-continue, .mail-continue{
+        width: 23vw;
+        transition: .3s;
+        padding: .75rem 2rem;
+        border: var(--primary-color) solid .2rem;
+    }
+
+    .name-continue:hover, .mail-continue:hover{
+        width: 26vw;
+    }
+
+    /*Menu sec*/
+    
+    .menu-title{
         width: 50vw;
+        border-bottom: var(--primary-color) solid .2rem;
+        padding: 3rem 0;
+    }
+    
+    .add-cat, .add-product{
+        width: 25vw;
+        padding: .75rem 0;
+        font-size: 1.75rem;
+        border-radius: 15rem;
+        transition: .3s;
     }
 
-    .name-continue{
+    .add-cat:hover, .add-product:hover{
+        width: 28vw;
+    }
+    
+    .create-menu{
         width: 25vw;
+        padding: .75rem 0;
+        font-size: 1.75rem;
+        border-radius: 5rem;
+        border: var(--primary-color) .2rem solid;
+        transition: .3s;
+    }
+    
+    .active:hover{
+        width: 28vw;
+    }
+    
+    .cat-div{
+        width: 50vw;
+        padding: 4rem 0;
+        border-bottom: var(--primary-color) solid .15rem;
+    }
+    
+    .delete-cat{
+        width: 2rem;
+        margin-left: calc(50vw - 2rem);
+    }
+    
+    .cat-title{
+        font-size: 2.5rem;
+        margin-top: -3.25rem;
+        padding-bottom: 2rem;
+    }
+
+    /*Products*/
+
+    .product-div{
+        padding: 4rem 0 10rem 0;
+        border-top: none;
+        width:50vw;
+        overflow: hidden;
+    }
+
+    .delete-product{
+        width: 2rem;
+        cursor: pointer;
+        margin-top: -12rem;
+        margin-left: calc(35vw - 2rem);
+    }
+
+    /*Pop-up*/
+
+    .popup{
+        width: 75vw;
+        border-radius: 3rem;
+        overflow-y: scroll;
+    }
+
+    .popup-close{
+        margin-left:calc(75vw - 5rem);
+    }
+
+    .popup-close img{
+        width: 40%;
+        transition: .3s;
+    }
+
+    .popup-close img:hover{
+        width: 45%;
+    }
+
+    .popup h2{
+        width: 80%;
+        margin-top: 0;
+    }
+
+    .popup p{
+        width: 80%;
+        font-size: 1.3rem;
+    }
+
+    .category-input{
+        width: 40%;
+        padding: .75rem 5%;
+        font-size: 1.75rem;
+    }
+
+    .product-input{
+        width: 40%;
+        padding: .75rem 5%;
+        font-size: 1.5rem;
+    }
+
+    .popup button{
+        width: 35%;
+        padding: .75rem 5%;
+        font-size: 1.75rem;
+        transition: .3s;
+    }
+
+    .popup button:hover{
+        width: 40%;
+    }
+
+    /*Thanks*/
+
+    .thanks h2{
+        padding-bottom: 3.5rem;
+        font-size: 2.75rem;
+        line-height: 5rem;
+    }
+
+    .thanks a{
+        padding: 1rem 3rem;
+        font-size: 1.75rem;
+        transition: .3s;
+    }
+
+    .thanks a:hover{
+        padding: 1rem 4rem;
     }
 }
