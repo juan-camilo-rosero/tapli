@@ -4,8 +4,8 @@
 }
 
 :root{
-    --primary-color: #320F00;
-    --secondary-color: #E8D2B2;
+    --primary-color: rgb(50, 39, 36);
+    --secondary-color: rgb(217, 217, 217);
     --third-color: rgba(0,0,0,0.6);
 }
 

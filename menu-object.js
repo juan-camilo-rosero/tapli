@@ -129,23 +129,29 @@ export function createProduct(btn) {
     $popup = d.querySelector(".popup-div")
 
     $btn.addEventListener("click", e => {
-        const category = $popup.getAttribute("data-category"),
+        const category = $popup.getAttribute("data-category").toLowerCase(),
+        passCategory = $popup.getAttribute("data-category"), // Existe porque si paso category en la otra función, da error
         $name = d.querySelector(".product-name"),
         $price = d.querySelector(".product-price"),
         $desc = d.querySelector(".product-desc"),
         menu = getData("menu"),
-        index = menu.options.indexOf(category),
+        index = menu.options_names.indexOf(category),
         objName = menu.options_names[index]
+        console.log(menu.options_names);
 
+        console.log(index);
+        console.log(category);
         console.log(objName);
 
         if($name.value != "" && $price.value != ""){
+            console.log(menu);
+            console.log(menu[objName].options);
             menu[objName].options.push($name.value)
             menu[objName].prices.push($price.value)
             menu[objName].descriptions.push($desc.value)
     
             ls.setItem("menu", JSON.stringify(menu))
-            createProductDiv($name.value, $desc.value, $price.value, category)
+            createProductDiv($name.value, $desc.value, $price.value, passCategory)
         }
         else alert("Dejaste algún campo vacío")
     })
